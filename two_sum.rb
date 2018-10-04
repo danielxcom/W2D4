@@ -22,12 +22,30 @@ end
 # Why? Because we rearrange the values so that the highest iter
 # Only when finding [1,2,3], 6.
 # Haven't worked out how to do this with other nums.
-def okay_two_sum?(arr, target_sum)
+# def okay_two_sum?(arr, target_sum)
+#
+#   arr.sort! do |el1, el2|
+#     el1 + el2
+#   end
+#   # return arr
+#   return arr[0] + arr[1] == target_sum
+#   # return false
+# end
 
-  arr.sort! do |el1, el2|
-    el1 + el2
+
+# THERES ALWAYS BSEARCH ALGORITHM.
+# logarithmic search O(logn) though I don't know if it qualifies as O(nlogn)
+def okay_two_sum?(arr, target_sum)
+  return false if arr.length == 0
+  mid = arr.length / 2
+
+  case target_sum <=> mid
+  when -1
+    arr.take(mid).okay_two_sum?(arr, target_sum)
+  when 0
+    return true
+  when 1
+    sub_arr = arr.drop(mid+1).okay_two_sum?(arr, target_sum)
+    sub_arr.nil? ? false : true
   end
-  # return arr
-  return arr[0] + arr[1] == target_sum
-  # return false
 end
