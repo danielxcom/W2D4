@@ -17,3 +17,9 @@ def bad_two_sum(arr, target_sum)
 
   return false
 end
+
+#O(n log n) Sorting
+
+def okay_two_sum?(arr, target_sum)
+  arr.sort
+end
