@@ -18,8 +18,16 @@ def bad_two_sum(arr, target_sum)
   return false
 end
 
-#O(n log n) Sorting
-
+#O(n log n) Sorting. FASTER.
+# Why? Because we rearrange the values so that the highest iter
+# Only when finding [1,2,3], 6.
+# Haven't worked out how to do this with other nums.
 def okay_two_sum?(arr, target_sum)
-  arr.sort
+
+  arr.sort! do |el1, el2|
+    el1 + el2
+  end
+  # return arr
+  return arr[0] + arr[1] == target_sum
+  # return false
 end
