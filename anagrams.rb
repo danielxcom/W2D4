@@ -1,5 +1,3 @@
-
-
 # anagram?("elvis", "lives")    #=> true
 
 #O(n!)
@@ -55,15 +53,26 @@ def second_anagram?(str1, str2)
   return true if arr2.empty?
 end
 
+#O(n) simple iteration over a string into an array.
 #O(n logn) because Sorting was mentioned.
+# anagram?("iceman", "cinema")    #=> true
+#slow for short strings, better for very long strings.
+def third_anagram?(str1, str2)
+  if str1.length != str2.length
+    return false
+  end
+  strArr1 = str1.split('')
+  strArr2 = str2.split('')
 
-# anagram?("gizmo", "sally")    #=> false
+  strArr1.sort == strArr2.sort
+
+end
 
 # O(n^3) Cubic time space complexity
 # Reason: Nested for loop with additional 2 loops to settle the strings
 # into hash map.
 # this turns into a O(1) complexity as we check along two hashes.
-# EDIT: We don't need to do .each for both, just check the two hashes directly. 
+# EDIT: We don't need to do .each for both, just check the two hashes directly.
 def fourth_anagram?(str1, str2)
   hash1 = Hash.new
   hash2 = Hash.new
@@ -95,4 +104,36 @@ def fourth_anagram?(str1, str2)
   #
   # return true
   hash1 == hash2
+end
+
+#bonus
+# bonus_hash('cinema', 'iceman')
+def bonus_hash(str1, str2)
+  hash = Hash.new(0)
+  str1.each_char do |el|
+    if hash[el].nil?
+      hash[el] = 1
+    else
+      hash[el] += 1
+    end
+  end
+  puts "original #{hash}"
+
+  str2.each_char do |el|
+    if hash[el].nil?
+      return false
+    else
+      hash[el] -= 1
+    end
+  end
+
+  puts "secondary #{hash}"
+
+  hash.each do |key, value|
+    if hash[key] < 0
+      return false
+    end
+  end
+
+  return true
 end
