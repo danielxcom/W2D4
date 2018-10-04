@@ -117,7 +117,6 @@ def bonus_hash(str1, str2)
       hash[el] += 1
     end
   end
-  puts "original #{hash}"
 
   str2.each_char do |el|
     if hash[el].nil?
@@ -126,8 +125,6 @@ def bonus_hash(str1, str2)
       hash[el] -= 1
     end
   end
-
-  puts "secondary #{hash}"
 
   hash.each do |key, value|
     if hash[key] < 0
