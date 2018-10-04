@@ -1,7 +1,7 @@
 # list = [ 0, 3, 5, 4, -5, 10, 1, 90 ]
 #    my_min(list)  # =>  -5
 
-#Ω(n log(n))
+#Ω(n log(n)) touch all of n.
 # base algorithm
 
 def my_min(list)
@@ -41,7 +41,7 @@ class Array
   end
 end
 
-# O(n^2)
+# O(n^2) time & space complexity
 
 def min_quad(list)
   (0...list.length).each do |idx|
@@ -85,7 +85,7 @@ end
 #     [3, -7]       # => -4
 #     [-7]          # => -7
 
-# O(n^2)
+# O(n^2) time & space complexity
 def sub_sum(set)
   store = []
 
